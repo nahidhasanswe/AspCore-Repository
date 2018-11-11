@@ -1,16 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNet.Core.Repository\AspNet.Core.Repository.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="AspNet.Core.Repository" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
   </ItemGroup>
 
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Md. Nahid Hasan</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>Latest</Product>
+    <Description>This is a unit Of Work Repository for asp.net core app.</Description>
+    <Copyright>Copyright (C) 2018</Copyright>
+    <PackageProjectUrl>https://github.com/nahidhasanswe/AspCore-Repository</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nahidhasanswe/AspCore-Repository</RepositoryUrl>
+    <PackageIconUrl>https://csharpcorner-mindcrackerinc.netdna-ssl.com/UploadFile/3d39b4/crud-operations-using-the-generic-repository-pattern-and-uni/Images/Generic%20Repository%20Pattern%20and%20Unit%20of%20Work%20workflow.jpg</PackageIconUrl>
+    <PackageReleaseNotes>This is a unit Of Work Repository for asp.net core app.</PackageReleaseNotes>
+    <PackageTags>Unit Of Work, Asp Core, Core, Net</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
 </Project>

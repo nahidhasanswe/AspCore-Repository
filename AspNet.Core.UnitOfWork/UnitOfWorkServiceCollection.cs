@@ -1,8 +1,5 @@
 using AspNet.Core;
-using AspNet.Core.Repository;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -10,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddUnitOfWork<TContext>(this IServiceCollection services) where TContext : DbContext
         {
-            services.AddTransient(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+            services.AddUnitOfWorkRepository();
 
             services.AddTransient<IUnitOfWork>(provider => {
                var context = provider.GetService<TContext>();

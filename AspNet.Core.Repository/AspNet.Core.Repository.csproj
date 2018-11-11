@@ -2,19 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Md. Nahid Hasan</Authors>
+    <Product>latest</Product>
+    <Description>This is generic reposiory for Entity Framework Core. This is awesome repository for database operation based on EF</Description>
+    <Copyright>Copyright (c) 2018</Copyright>
+    <PackageProjectUrl>https://github.com/nahidhasanswe/AspCore-Repository</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nahidhasanswe/AspCore-Repository</RepositoryUrl>
+    <PackageTags>Repository, AspNet Core, Core, AspNet</PackageTags>
+    <PackageReleaseNotes>This is generic reposiory for Entity Framework Core. This is awesome repository for database operation based on EF</PackageReleaseNotes>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.Repository.Common" Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AspNet.Core.Common\AspNet.Core.Common.csproj" />
   </ItemGroup>
 
 </Project>
