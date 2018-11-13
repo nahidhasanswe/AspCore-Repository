@@ -20,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
         public static IServiceCollection AddUnitOfWorkRepository(this IServiceCollection services)
         {
-            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             return services;
         }
     }

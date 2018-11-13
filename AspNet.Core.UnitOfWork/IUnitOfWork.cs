@@ -3,14 +3,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using AspNet.Core.Repository;
 
-namespace AspNet.Core
+namespace AspNetCore.UnitOfWork
 {
-    public interface IUnitOfWork : IUnitOfWorkForService
+    public interface IUnitOfWork : IUnitOfWorkForService, IQueryExecutor
     {
         int Save(bool acceptAllChangesOnSuccess);
         int Save();
-        Task<int> Save(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken));
-        Task<int> Save(CancellationToken cancellationToken = default(CancellationToken));
+        Task<int> SaveAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken));
+        Task<int> SaveAsync(CancellationToken cancellationToken = default(CancellationToken));
         void Dispose(bool disposing);
         void Dispose();
     }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Core.Repository", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Core.Common", "AspNet.Core.Common\AspNet.Core.Common.csproj", "{44761527-412C-4263-B67D-91D4341E95AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Sample.Service", "AspNetCore.Sample.Service\AspNetCore.Sample.Service.csproj", "{BDAA92ED-564F-4C72-8557-5CAAB900B31F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{44761527-412C-4263-B67D-91D4341E95AD}.Release|x64.Build.0 = Release|Any CPU
 		{44761527-412C-4263-B67D-91D4341E95AD}.Release|x86.ActiveCfg = Release|Any CPU
 		{44761527-412C-4263-B67D-91D4341E95AD}.Release|x86.Build.0 = Release|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Debug|x64.Build.0 = Debug|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Debug|x86.Build.0 = Debug|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Release|x64.ActiveCfg = Release|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Release|x64.Build.0 = Release|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Release|x86.ActiveCfg = Release|Any CPU
+		{BDAA92ED-564F-4C72-8557-5CAAB900B31F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
