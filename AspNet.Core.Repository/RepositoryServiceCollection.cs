@@ -1,4 +1,4 @@
-﻿using AspNet.Core.Repository;
+﻿using AspNetCore.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 

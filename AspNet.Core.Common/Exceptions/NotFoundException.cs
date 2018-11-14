@@ -1,6 +1,4 @@
-using System;
-
-namespace AspNet.Core.Common.Exceptions
+namespace AspNetCore.UnitOfWork.Common.Exceptions
 {
     [System.Serializable]
     public class NotFoundException : System.Exception

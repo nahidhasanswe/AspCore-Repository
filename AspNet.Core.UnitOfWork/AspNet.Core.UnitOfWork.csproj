@@ -1,8 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="AspNet.Core.Repository" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AspNet.Core.Repository\AspNet.Core.Repository.csproj" />
   </ItemGroup>
 
 
@@ -19,6 +22,7 @@
     <PackageReleaseNotes>This is a unit Of Work Repository for asp.net core app.</PackageReleaseNotes>
     <PackageTags>Unit Of Work, Asp Core, Core, Net</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
 </Project>

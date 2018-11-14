@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace AspNet.Core.Common.Extensions
+namespace AspNetCore.UnitOfWork.Common.Extensions
 {
     public static class JSON
     {

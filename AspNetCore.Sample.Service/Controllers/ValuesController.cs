@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Threading.Tasks;
+using AspNetCore.Repository;
 using AspNetCore.Sample.Service.Model;
 using AspNetCore.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +17,11 @@ namespace AspNetCore.Sample.Service.Controllers
         public ValuesController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+        }
+
+        private IGenericRepository<TestClass> GetUnitOfWork()
+        {
+            return _unitOfWork.Repository<TestClass>();
         }
 
         [HttpGet]

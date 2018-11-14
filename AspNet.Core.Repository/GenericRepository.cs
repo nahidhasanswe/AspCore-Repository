@@ -4,11 +4,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
-using AspNet.Core.Common;
+using AspNetCore.UnitOfWork.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace AspNet.Core.Repository {
+namespace AspNetCore.Repository {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class {
         private readonly DbSet<TEntity> dbSet;
         private readonly DbContext _context;
@@ -28,13 +28,9 @@ namespace AspNet.Core.Repository {
             return entity;
         }
 
-        public void AddRange (params TEntity[] entites) {
-            dbSet.AddRange (entites);
-        }
+        public void AddRange (params TEntity[] entites) => dbSet.AddRange(entites);
 
-        public async Task AddRangeAsync (params TEntity[] entities) {
-            await dbSet.AddRangeAsync (entities);
-        }
+        public async Task AddRangeAsync (params TEntity[] entities) => await dbSet.AddRangeAsync(entities);
 
         public TEntity Delete (object key) {
             TEntity entity = Find (key, true);
@@ -118,7 +114,7 @@ namespace AspNet.Core.Repository {
 
         public TEntity Find (Expression<Func<TEntity, bool>> predicate, bool Tracking = false) {
             if (Tracking) {
-                return dbSet.Find (predicate);
+                return dbSet.FirstOrDefault(predicate);
             }
 
             return dbSet.AsNoTracking ().FirstOrDefault (predicate);
@@ -133,9 +129,7 @@ namespace AspNet.Core.Repository {
             return Where (predicate).Select (projection).FirstOrDefault ();
         }
 
-        public async Task<TEntity> FindAsync (object key, bool Tracking = false) {
-            return await dbSet.FindAsync (key);
-        }
+        public async Task<TEntity> FindAsync (object key, bool Tracking = false) => await dbSet.FindAsync(key);
 
         public async Task<TEntity> FindAsync (Expression<Func<TEntity, bool>> predicate, bool Tracking = false) {
             if (Tracking) {
@@ -419,9 +413,7 @@ namespace AspNet.Core.Repository {
             return entity;
         }
 
-        public void UpdateRange (params TEntity[] entities) {
-            dbSet.UpdateRange (entities);
-        }
+        public void UpdateRange (params TEntity[] entities) => dbSet.UpdateRange(entities);
 
         public void UpdateRange (List<TEntity> entities, List<object> avoidProperties) {
             foreach (TEntity entity in entities) {
@@ -462,9 +454,7 @@ namespace AspNet.Core.Repository {
             return await AvoidPropertyAsync (exist, avoidProperties.ToList ());
         }
 
-        public IQueryable<TEntity> Where (Expression<Func<TEntity, bool>> predicate) {
-            return dbSet.Where (predicate);
-        }
+        public IQueryable<TEntity> Where (Expression<Func<TEntity, bool>> predicate) => dbSet.Where(predicate);
 
         private TEntity AvoidProperty (TEntity entity, List<object> avoidProperties) {
             EntityEntry entry = dbSet.Update (entity);
@@ -491,5 +481,13 @@ namespace AspNet.Core.Repository {
 
             return await Task.FromResult<TEntity> (entity);
         }
+
+        public bool IsExist(object key) => dbSet.Find(key) == null ? false : true;
+
+        public async Task<bool> IsExistAsync(object key) => (await dbSet.FindAsync(key)) == null ? false : true;
+
+        public bool IsExist(Expression<Func<TEntity, object>> predicate) => dbSet.Find(predicate) == null ? false : true;
+
+        public async Task<bool> IsExistAsync(Expression<Func<TEntity, object>> predicate) => (await dbSet.FindAsync(predicate)) == null ? false : true;
     }
 }

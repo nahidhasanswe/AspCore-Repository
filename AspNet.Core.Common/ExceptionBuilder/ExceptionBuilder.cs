@@ -1,6 +1,6 @@
-using AspNet.Core.Common.Exceptions;
+using AspNetCore.UnitOfWork.Common.Exceptions;
 
-namespace AspNet.Core.Common
+namespace AspNetCore.UnitOfWork.Common
 {
     public static class ExceptionsBuilder
     {

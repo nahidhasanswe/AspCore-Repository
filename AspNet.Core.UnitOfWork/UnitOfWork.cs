@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,10 +8,11 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Transactions;
-using AspNet.Core.Repository;
+using AspNetCore.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspNetCore.UnitOfWork {
+namespace AspNetCore.UnitOfWork
+{
     public class UnitOfWork<TContext> : IUnitOfWork, IUnitOfWork<TContext>, IDisposable where TContext : DbContext {
 
         private readonly TContext _context;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace AspNet.Core.Repository
+namespace AspNetCore.Repository
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
@@ -16,6 +16,12 @@ namespace AspNet.Core.Repository
         TEntity Update(object key, TEntity entity);
         TEntity Update(TEntity entity, params object[] avoidProperties);
         TEntity Update(object key, TEntity entity, params object[] avoidProperties);
+
+        bool IsExist(object key);
+        Task<bool> IsExistAsync(object key);
+        bool IsExist(Expression<Func<TEntity, object>> key);
+        Task<bool> IsExistAsync(Expression<Func<TEntity, object>> key);
+
 
         Task<TEntity> UpdateAsync(TEntity entity);
         Task<TEntity> UpdateAsync(object key, TEntity entity);

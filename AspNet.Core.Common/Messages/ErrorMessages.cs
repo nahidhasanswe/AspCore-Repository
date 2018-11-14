@@ -1,4 +1,4 @@
-namespace AspNet.Core.Common.Messages
+namespace AspNetCore.UnitOfWork.Common.Messages
 {
     public class ErrorMessages
     {
