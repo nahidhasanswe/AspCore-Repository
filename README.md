@@ -13,13 +13,13 @@ First install the library from [Nuget](https://www.nuget.org/packages/AspNet.Cor
 For Package Manager
 
 ```
-Install-Package AspNet.Core.UnitOfWork -Version 2.0.0
+Install-Package AspNet.Core.UnitOfWork -Version 2.1.0
 ```
 
 For .Net CLI
 
 ```
-dotnet add package AspNet.Core.UnitOfWork --version 2.0.0
+dotnet add package AspNet.Core.UnitOfWork --version 2.1.0
 ```
 
 ## Quickly start
@@ -65,19 +65,19 @@ public ValuesController(IUnitOfWork unitOfWork)
 
 public async Task<IActionResult> Get(string userId)
 {
-    User user = await GetUnitOfWork().FindAsync(p => p.userId == userId);
+    User user = await GetUnitOfWork().GetFirstOrDefaultAsync(predicate: p => p.userId == userId);
 
     return user ?? BadRequest() : user;
 }
 
-private IGenericRepository<User> GetUnitOfWork()
+private IRepository<User> GetUnitOfWork()
 {
     return _unitOfWork.Repository<User>();
 }
 
 public async Task<IActionResult> Post(User user)
 {
-    User user = await GetUnitOfWork().SaveAsync(user);
+    User user = await GetUnitOfWork().InsertAsync(user);
     await GetUnitOfWork.SaveAsync();
     return user ?? BadRequest() : user;
 }
@@ -85,9 +85,15 @@ public async Task<IActionResult> Post(User user)
 
 ### How to use Raw Sql in UnitOfWork
 
-If you want to execute raw sql command, so you do that using this library
+If you want to execute raw sql command, so must be inject IQueryExecutor
 
 ```csharp
+
+public ValuesController(IQueryExecutor queryExecutor)
+{
+    _queryExecutor = queryExecutor;
+}
+
 public async Task<ActionResult> Get()
 {
     try{
@@ -96,7 +102,7 @@ public async Task<ActionResult> Get()
 
         SqlParameter name = new SqlParameter("@name","Nahid Hasan");
 
-        var result = await _unitOfWork.ExecFilterAsync<TestClass,Test>(query, p => new Test(){Name = p.Name}, name);
+        var result = await _queryExecutor.ExecFilterAsync<TestClass,Test>(query, p => new Test(){Name = p.Name}, name);
 
         return new JsonResult(result);
 

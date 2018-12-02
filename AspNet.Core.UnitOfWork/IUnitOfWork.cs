@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace AspNetCore.UnitOfWork
 {
-    public interface IUnitOfWork : IUnitOfWorkForService, IQueryExecutor
+    public interface IUnitOfWork : IUnitOfWorkForService
     {
         /// <summary>
         /// Save to the database of the change of dbContext
@@ -48,7 +48,7 @@ namespace AspNetCore.UnitOfWork
         /// </summary>
         /// <typeparam name="T">Entity Type</typeparam>
         /// <returns></returns>
-        IGenericRepository<T> Repository<T>() where T : class, new();
+        IRepository<T> Repository<T>() where T : class, new();
 
     }
 }

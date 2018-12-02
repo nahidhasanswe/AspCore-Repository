@@ -1,6 +1,5 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -75,7 +74,7 @@ namespace AspNetCore.UnitOfWork
         /// <param name="selector">Provide the Selector Between TEntity and TResult</param>
         /// <param name="parameters">Provide SqlParameter List of filter query</param>
         /// <returns></returns>
-        List<TResult> ExecFilter<TEntity,TResult>(string filter,Expression<Func<TEntity,TResult>> selector, params SqlParameter[] parameters) where TEntity : class where TResult : class;
+        List<TResult> ExecFilter<TEntity, TResult>(string filter, Expression<Func<TEntity, TResult>> selector, params object[] parameters) where TEntity : class where TResult : class;
         /// <summary>
         /// Execute Async the Sql Command with Filter of Where Condition and Get Custom Entity List
         /// </summary>
@@ -84,7 +83,7 @@ namespace AspNetCore.UnitOfWork
         /// <param name="filter">Provide the query after WHERE condition</param>
         /// <param name="selector">Provide the Selector Between TEntity and TResult</param>
         /// <param name="parameters">Provide SqlParameter List of filter query</param>
-        Task<List<TResult>> ExecFilterAsync<TEntity,TResult>(string filter,Expression<Func<TEntity,TResult>> selector, params SqlParameter[] parameters) where TEntity : class where TResult : class;
+        Task<List<TResult>> ExecFilterAsync<TEntity, TResult>(string filter, Expression<Func<TEntity, TResult>> selector, params object[] parameters) where TEntity : class where TResult : class;
         /// <summary>
         /// Execute Scalar Sql Command
         /// </summary>
@@ -97,6 +96,6 @@ namespace AspNetCore.UnitOfWork
         /// <param name="query">Sql Query</param>
         /// <param name="parameters">Provide SqlParameter List of filter query</param>
         /// <returns>Return the object of Scalar object query</returns>
-        object ExecScalar(string query, params SqlParameter[] parameters);
+        object ExecScalar(string query, params object[] parameters);
     }
 }

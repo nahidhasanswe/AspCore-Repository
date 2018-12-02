@@ -14,12 +14,17 @@ namespace AspNetCore.Sample.Service.Controllers
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        public ValuesController(IUnitOfWork unitOfWork)
+        private readonly IQueryExecutor _queryExecutor;
+
+        public ValuesController(
+            IUnitOfWork unitOfWork,
+            IQueryExecutor queryExecutor)
         {
             _unitOfWork = unitOfWork;
+            _queryExecutor = queryExecutor;
         }
 
-        private IGenericRepository<TestClass> GetUnitOfWork()
+        private IRepository<TestClass> GetUnitOfWork()
         {
             return _unitOfWork.Repository<TestClass>();
         }
@@ -33,7 +38,7 @@ namespace AspNetCore.Sample.Service.Controllers
 
                 SqlParameter name = new SqlParameter("@name","Nahid Hasan");
 
-                var result = await _unitOfWork.ExecFilterAsync <TestClass,Test>(query, p => new Test(){Name = p.Name});
+                var result = await _queryExecutor.ExecFilterAsync <TestClass,Test>(query, p => new Test(){Name = p.Name});
 
                 return new JsonResult(result);
             }catch(Exception ex)
@@ -46,6 +51,8 @@ namespace AspNetCore.Sample.Service.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
+            var user = GetUnitOfWork().GetFirstOrDefaultAsync(predicate: p => p.Id == id);
+
             return "value";
         }
 

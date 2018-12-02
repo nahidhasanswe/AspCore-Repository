@@ -1,11 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="AspNet.Core.Repository" Version="2.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AspNet.Core.Repository\AspNet.Core.Repository.csproj" />
   </ItemGroup>
 
 
@@ -14,7 +12,7 @@
     <Authors>Md. Nahid Hasan</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>Latest</Product>
-    <Description>This is a unit Of Work Repository for asp.net core app.</Description>
+    <Description>This is a unit Of Work Repository for asp.net core app. In this repository , Query Executor and UnitOfWork separate. You can now perform query execution by injecting IQueryExecutor</Description>
     <Copyright>Copyright (C) 2018</Copyright>
     <PackageProjectUrl>https://github.com/nahidhasanswe/AspCore-Repository</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nahidhasanswe/AspCore-Repository</RepositoryUrl>
@@ -22,7 +20,7 @@
     <PackageReleaseNotes>This is a unit Of Work Repository for asp.net core app.</PackageReleaseNotes>
     <PackageTags>Unit Of Work, Asp Core, Core, Net</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
   </PropertyGroup>
 
 </Project>

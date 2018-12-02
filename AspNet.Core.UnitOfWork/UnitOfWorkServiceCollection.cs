@@ -1,3 +1,4 @@
+﻿using AspNetCore.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,7 +9,7 @@ namespace AspNetCore.UnitOfWork
     /// </summary>
     public static class ServiceCollectionExtension
     {
-        
+
         /// <summary>
         /// Registers the unit of work given context as a service in the <see cref="IServiceCollection"/>.
         /// </summary>
@@ -26,6 +27,8 @@ namespace AspNetCore.UnitOfWork
             // Solution: check IUnitOfWork whether or null
             services.AddScoped<IUnitOfWork, UnitOfWork<TContext>>();
             services.AddScoped<IUnitOfWork<TContext>, UnitOfWork<TContext>>();
+            services.AddScoped<IQueryExecutor, QueryExecutor<TContext>>();
+            services.AddScoped<IQueryExecutor<TContext>, QueryExecutor<TContext>>();
 
             return services;
         }
@@ -44,8 +47,13 @@ namespace AspNetCore.UnitOfWork
             where TContext1 : DbContext
             where TContext2 : DbContext
         {
+            services.AddUnitOfWorkRepository();
+
             services.AddScoped<IUnitOfWork<TContext1>, UnitOfWork<TContext1>>();
             services.AddScoped<IUnitOfWork<TContext2>, UnitOfWork<TContext2>>();
+
+            services.AddScoped<IQueryExecutor<TContext1>, QueryExecutor<TContext1>>();
+            services.AddScoped<IQueryExecutor<TContext2>, QueryExecutor<TContext2>>();
 
             return services;
         }
@@ -66,9 +74,15 @@ namespace AspNetCore.UnitOfWork
             where TContext2 : DbContext
             where TContext3 : DbContext
         {
+            services.AddUnitOfWorkRepository();
+
             services.AddScoped<IUnitOfWork<TContext1>, UnitOfWork<TContext1>>();
             services.AddScoped<IUnitOfWork<TContext2>, UnitOfWork<TContext2>>();
             services.AddScoped<IUnitOfWork<TContext3>, UnitOfWork<TContext3>>();
+
+            services.AddScoped<IQueryExecutor<TContext1>, QueryExecutor<TContext1>>();
+            services.AddScoped<IQueryExecutor<TContext2>, QueryExecutor<TContext2>>();
+            services.AddScoped<IQueryExecutor<TContext3>, QueryExecutor<TContext3>>();
 
             return services;
         }
@@ -91,10 +105,18 @@ namespace AspNetCore.UnitOfWork
             where TContext3 : DbContext
             where TContext4 : DbContext
         {
+            services.AddUnitOfWorkRepository();
+
+
             services.AddScoped<IUnitOfWork<TContext1>, UnitOfWork<TContext1>>();
             services.AddScoped<IUnitOfWork<TContext2>, UnitOfWork<TContext2>>();
             services.AddScoped<IUnitOfWork<TContext3>, UnitOfWork<TContext3>>();
             services.AddScoped<IUnitOfWork<TContext4>, UnitOfWork<TContext4>>();
+
+            services.AddScoped<IQueryExecutor<TContext1>, QueryExecutor<TContext1>>();
+            services.AddScoped<IQueryExecutor<TContext2>, QueryExecutor<TContext2>>();
+            services.AddScoped<IQueryExecutor<TContext3>, QueryExecutor<TContext3>>();
+            services.AddScoped<IQueryExecutor<TContext4>, QueryExecutor<TContext4>>();
 
             return services;
         }
